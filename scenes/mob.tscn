@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0c6xjl5p5lph"]
+
+[ext_resource type="Script" uid="uid://drfmqmfeliav0" path="res://scripts/mob.gd" id="1_bsing"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_d4cuo"]
+[ext_resource type="Script" uid="uid://c11xrbq04uvgq" path="res://scripts/States/State Machine.gd" id="3_d4cuo"]
+[ext_resource type="Script" uid="uid://ckrrojldpd11k" path="res://scripts/States/EnemyIdle.gd" id="4_71rcx"]
+[ext_resource type="Script" uid="uid://dgtffjkhmf80i" path="res://scripts/States/EnemyFollow.gd" id="5_xsfyf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nokgg"]
+radius = 50.04
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_bsing")
+
+[node name="Slime" parent="." instance=ExtResource("2_d4cuo")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -29)
+shape = SubResource("CircleShape2D_nokgg")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_d4cuo")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_71rcx")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://ckrrojldpd11k"
+
+[node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_xsfyf")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://dgtffjkhmf80i"
