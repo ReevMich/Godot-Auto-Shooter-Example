@@ -19,5 +19,6 @@ List of features we can probably implement:
 - Health bars on enemies
 - showing damage numbers above enemies when hit by player
 - a start game screen with a button that says start game
+- add a "play again" button on the game over screen
 - different kind of enemies varying of health or damage
 - different guns, varying damage and bullet fire rate
