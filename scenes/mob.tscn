@@ -1,25 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0c6xjl5p5lph"]
+[gd_scene load_steps=10 format=3 uid="uid://b0c6xjl5p5lph"]
 
-[ext_resource type="Script" uid="uid://drfmqmfeliav0" path="res://scripts/mob.gd" id="1_bsing"]
+[ext_resource type="Script" uid="uid://drfmqmfeliav0" path="res://scripts/gdScript/mob.gd" id="1_bsing"]
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_d4cuo"]
-[ext_resource type="Script" uid="uid://c11xrbq04uvgq" path="res://scripts/States/State Machine.gd" id="3_d4cuo"]
-[ext_resource type="Script" uid="uid://ckrrojldpd11k" path="res://scripts/States/EnemyIdle.gd" id="4_71rcx"]
-[ext_resource type="Script" uid="uid://dgtffjkhmf80i" path="res://scripts/States/EnemyFollow.gd" id="5_xsfyf"]
+[ext_resource type="Script" uid="uid://c11xrbq04uvgq" path="res://scripts/gdScript/States/State Machine.gd" id="3_d4cuo"]
+[ext_resource type="Script" uid="uid://ckrrojldpd11k" path="res://scripts/gdScript/States/EnemyIdle.gd" id="4_71rcx"]
+[ext_resource type="Script" uid="uid://dgtffjkhmf80i" path="res://scripts/gdScript/States/EnemyFollow.gd" id="5_xsfyf"]
+[ext_resource type="PackedScene" uid="uid://bvyjsyft6wie5" path="res://scenes/components/hit_box_component.tscn" id="6_ebxvl"]
+[ext_resource type="PackedScene" uid="uid://db6b8s2rldif4" path="res://scenes/components/HealthComponent.tscn" id="7_wpivu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nokgg"]
-radius = 50.04
+radius = 54.037
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebxvl"]
+radius = 37.0135
 
 [node name="Mob" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_bsing")
 
-[node name="Slime" parent="." instance=ExtResource("2_d4cuo")]
-unique_name_in_owner = true
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_ebxvl")]
+health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(1, -29)
 shape = SubResource("CircleShape2D_nokgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_ebxvl")
+
+[node name="Slime" parent="." instance=ExtResource("2_d4cuo")]
+unique_name_in_owner = true
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_d4cuo")
@@ -34,3 +47,8 @@ metadata/_custom_type_script = "uid://ckrrojldpd11k"
 script = ExtResource("5_xsfyf")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://dgtffjkhmf80i"
+
+[node name="HealthComponent" parent="." instance=ExtResource("7_wpivu")]
+
+[connection signal="hit_by_bullet" from="HitBoxComponent" to="." method="_on_hit_box_component_hit_by_bullet"]
+[connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]

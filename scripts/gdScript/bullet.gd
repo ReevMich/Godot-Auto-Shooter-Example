@@ -21,8 +21,12 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(area) -> void:
+	print('hit something')
 	queue_free()
-	if body.has_method("take_damage"):
-		body.take_damage(damage)
+	
+	if area is HitBoxComponent:
+		var hitbox: HitBoxComponent = area;
+		hitbox.take_damage(damage)
+		
 	hit.emit()

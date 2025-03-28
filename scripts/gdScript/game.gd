@@ -14,11 +14,9 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_mob()
 
 
-func _on_player_health_depleted() -> void:
+func _on_player_dealth() -> void:
 	Engine.time_scale = 0.5
 	await get_tree().create_timer(2).timeout;
 	%GameOver.show()
 	
 	get_tree().paused = true
-	
-	
