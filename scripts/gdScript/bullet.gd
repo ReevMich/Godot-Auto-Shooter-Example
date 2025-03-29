@@ -22,7 +22,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(area) -> void:
-	print('hit something')
 	queue_free()
 	
 	if area is HitBoxComponent:
