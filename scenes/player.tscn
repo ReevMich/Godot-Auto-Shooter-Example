@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cj1871q5msnfy"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://4553c6rwxl5a" path="res://scripts/gdScript/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://4553c6rwxl5a" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dwc7ydnoyf5ad" path="res://scenes/gun.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://db6b8s2rldif4" path="res://scenes/components/HealthComponent.tscn" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://bvyjsyft6wie5" path="res://scenes/components/hit_box_component.tscn" id="4_tuyoq"]

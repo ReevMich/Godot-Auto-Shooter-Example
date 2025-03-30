@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://b0c6xjl5p5lph"]
 
-[ext_resource type="Script" uid="uid://drfmqmfeliav0" path="res://scripts/gdScript/mob.gd" id="1_bsing"]
+[ext_resource type="Script" uid="uid://drfmqmfeliav0" path="res://scripts/mob.gd" id="1_bsing"]
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_d4cuo"]
-[ext_resource type="Script" uid="uid://c11xrbq04uvgq" path="res://scripts/gdScript/States/State Machine.gd" id="3_d4cuo"]
-[ext_resource type="Script" uid="uid://ckrrojldpd11k" path="res://scripts/gdScript/States/EnemyIdle.gd" id="4_71rcx"]
-[ext_resource type="Script" uid="uid://dgtffjkhmf80i" path="res://scripts/gdScript/States/EnemyFollow.gd" id="5_xsfyf"]
+[ext_resource type="Script" uid="uid://c11xrbq04uvgq" path="res://scripts/States/State Machine.gd" id="3_d4cuo"]
+[ext_resource type="Script" uid="uid://ckrrojldpd11k" path="res://scripts/States/EnemyIdle.gd" id="4_71rcx"]
+[ext_resource type="Script" uid="uid://dgtffjkhmf80i" path="res://scripts/States/EnemyFollow.gd" id="5_xsfyf"]
 [ext_resource type="PackedScene" uid="uid://bvyjsyft6wie5" path="res://scenes/components/hit_box_component.tscn" id="6_ebxvl"]
 [ext_resource type="PackedScene" uid="uid://db6b8s2rldif4" path="res://scenes/components/HealthComponent.tscn" id="7_wpivu"]
 

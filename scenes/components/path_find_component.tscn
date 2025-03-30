@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbu7wra6obh7"]
+
+[ext_resource type="Script" uid="uid://dlal8jsvd1568" path="res://scripts/components/path_find_component.gd" id="1_ryt3l"]
+
+[node name="PathFindComponent" type="Node2D"]
+script = ExtResource("1_ryt3l")
+
+[node name="Timer" type="Timer" parent="."]

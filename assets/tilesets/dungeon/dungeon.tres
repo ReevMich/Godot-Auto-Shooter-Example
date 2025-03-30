@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b58p6grjeo821"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://b58p6grjeo821"]
 
 [ext_resource type="Texture2D" uid="uid://dkr2ilibl1m1o" path="res://assets/tilesets/dungeon/Dungeon_24x24.png" id="1_5ubk8"]
+[ext_resource type="Texture2D" uid="uid://dg1vv6vhep11b" path="res://assets/tilesets/dungeon/decor.png" id="2_jud1f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jud1f"]
 texture = ExtResource("1_5ubk8")
@@ -154,6 +155,43 @@ texture_region_size = Vector2i(24, 24)
 5:5/4/flip_h = true
 5:5/4/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7go8b"]
+texture = ExtResource("2_jud1f")
+texture_region_size = Vector2i(24, 24)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+5:1/0 = 0
+6:1/0 = 0
+1:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+
 [resource]
 tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 1
@@ -162,3 +200,4 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Ground 0"
 terrain_set_0/terrain_0/color = Color(0.545098, 0.32549, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_jud1f")
+sources/1 = SubResource("TileSetAtlasSource_7go8b")

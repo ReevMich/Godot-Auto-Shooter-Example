@@ -1,9 +1,33 @@
-[gd_scene load_steps=6 format=4 uid="uid://cpxa1w6qobvr3"]
+[gd_scene load_steps=11 format=4 uid="uid://cpxa1w6qobvr3"]
 
 [ext_resource type="PackedScene" uid="uid://cj1871q5msnfy" path="res://scenes/player.tscn" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://dslq4qetvhean" path="res://scripts/gdScript/game.gd" id="1_feb5d"]
+[ext_resource type="Script" uid="uid://dslq4qetvhean" path="res://scripts/game.gd" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://b72s2rknakjs0" path="res://scenes/pine_tree.tscn" id="2_e2o6t"]
 [ext_resource type="TileSet" uid="uid://b58p6grjeo821" path="res://assets/tilesets/dungeon/dungeon.tres" id="2_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://t08skoadd2wc" path="res://animations/items/flask_1/flasks_1_1.png" id="3_gee14"]
+[ext_resource type="Texture2D" uid="uid://m5ni6iaio6n1" path="res://animations/items/flask_1/flasks_1_2.png" id="4_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://b38jagupsuj4u" path="res://animations/items/flask_1/flasks_1_3.png" id="5_vtaks"]
+[ext_resource type="Texture2D" uid="uid://dofvdxrctkmdd" path="res://animations/items/flask_1/flasks_1_4.png" id="6_kvpfn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dinhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gee14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0tnpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vtaks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kvpfn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="Curve2D" id="Curve2D_fc0e3"]
 _data = {
@@ -25,6 +49,12 @@ tile_set = ExtResource("2_lbhrr")
 [node name="Walls" type="TileMapLayer" parent="Map"]
 tile_map_data = PackedByteArray("AAARAP3/AAAKAAEAAAAQAP3/AAAJAAEAAAAPAP3/AAAJAAEAAAAOAP3/AAAJAAEAAAANAP3/AAAJAAEAAAAMAP3/AAAJAAEAAAALAP3/AAAJAAEAAAAKAP3/AAAJAAEAAAAJAP3/AAAJAAEAAAAIAP3/AAAJAAEAAAAHAP3/AAAJAAEAAAAGAP3/AAAJAAEAAAAFAP3/AAAJAAEAAAAEAP3/AAAJAAEAAAADAP3/AAAJAAEAAAACAP3/AAAJAAEAAAABAP3/AAAJAAEAAAAAAP3/AAAJAAEAAAD///3/AAAJAAEAAAASAP7/AAALAAMAAAASAP//AAALAAMAAAASAAAAAAALAAMAAAASAAEAAAALAAMAAAASAAIAAAALAAMAAAASAAMAAAALAAMAAAASAAQAAAALAAMAAAASAAUAAAALAAMAAAASAAYAAAALAAMAAAASAAcAAAALAAMAAAASAAgAAAALAAMAAAASAAkAAAALAAMAAAASAAoAAAALAAMAAAASAAsAAAALAAUAAAARAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAMAAsAAAAAAAEAAAALAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAGAAsAAAAAAAEAAAAFAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAADAAsAAAAAAAEAAAACAAsAAAAAAAEAAAABAAsAAAAAAAEAAAAAAAsAAAAAAAEAAAD9//7/AAALAAMAABD9////AAALAAMAABD9/wAAAAALAAMAABD9/wEAAAALAAMAABD9/wYAAAALAAMAABD9/wcAAAALAAMAABD9/wgAAAALAAMAABD9/wkAAAALAAMAABD//wsAAAAAAAEAAAD9/wsAAAALAAUAABD9/woAAAALAAMAABD9/wUAAAAFAAUAAAD8/wUAAAABAAAAAAD7/wUAAAABAAAAAAD6/wUAAAABAAAAAAD5/wUAAAABAAAAAAD4/wUAAAABAAAAAAD4/wIAAAAJAAEAAAD5/wIAAAAJAAEAAAD6/wIAAAAJAAEAAAD7/wIAAAAJAAEAAAD8/wIAAAAJAAEAAAD9/wIAAAAFAAEAAAD3/wIAAAAJAAEAAAD2/wIAAAAJAAEAAAD0/wMAAAALAAMAABD0/wQAAAALAAMAABD0/wUAAAALAAMAABD0/wYAAAALAAMAABD0/wcAAAALAAMAABD0/wgAAAALAAMAABD0/wkAAAALAAMAABD3/wUAAAAFAAUAABD3/wYAAAALAAMAAAD3/wcAAAALAAMAAAD3/wgAAAALAAMAAAD3/wkAAAALAAMAAAD0/wsAAAAFAAEAAAD3/wsAAAAFAAEAABD4/wsAAAAJAAEAAAD5/wsAAAAJAAEAAADz/wsAAAAJAAEAAADy/wsAAAAJAAEAAADx/wsAAAAJAAEAAADw/wsAAAAJAAEAAADv/wsAAAAJAAEAAADt/wwAAAALAAMAAgDt/w0AAAALAAMAAgDt/w4AAAALAAMAAgDt/w8AAAALAAMAAgDt/xAAAAALAAMAAgDt/xEAAAALAAMAAgDt/xIAAAALAAMAAgDv/xMAAAABAAAAAADw/xMAAAABAAAAAADx/xMAAAABAAAAAADy/xMAAAABAAAAAADz/xMAAAABAAAAAAD0/xMAAAABAAAAAAD1/xMAAAABAAAAAAD2/xMAAAABAAAAAAD3/xMAAAABAAAAAAD4/xMAAAABAAAAAAD5/xMAAAABAAAAAAD6/xMAAAABAAAAAAD7/wwAAAALAAMAAQD7/w0AAAALAAMAAQD7/w4AAAALAAMAAQD7/w8AAAALAAMAAQD7/xAAAAALAAMAAQD7/xEAAAALAAMAAQD7/xIAAAALAAMAAQD7/xMAAAALAAUAAQD+//3/AAAKAAEAAgD1/wIAAAAKAAEAAgD6/wsAAAAKAAEAAQDu/wsAAAAKAAEAAgDt/xMAAAALAAUAAgDu/xMAAAABAAAAAAA=")
 tile_set = ExtResource("2_lbhrr")
+
+[node name="Decor" type="Node2D" parent="Map"]
+
+[node name="health_flask" type="AnimatedSprite2D" parent="Map/Decor"]
+sprite_frames = SubResource("SpriteFrames_dinhu")
+frame_progress = 0.813731
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_fc0e3")
