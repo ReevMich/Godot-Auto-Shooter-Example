@@ -15,11 +15,12 @@ radius = 54.037
 radius = 37.0135
 
 [node name="Mob" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_bsing")
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_ebxvl")]
+collision_mask = 16
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
