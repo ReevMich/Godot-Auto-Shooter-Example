@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0c6xjl5p5lph"]
+
+[ext_resource type="Script" uid="uid://drfmqmfeliav0" path="res://scripts/enemy.gd" id="1_md484"]
+[ext_resource type="PackedScene" uid="uid://bbv5cw0vmd5ov" path="res://scenes/components/stats_component.tscn" id="2_ipns3"]
+[ext_resource type="PackedScene" uid="uid://bvyjsyft6wie5" path="res://scenes/components/hurt_box_component.tscn" id="3_8qclf"]
+[ext_resource type="Script" uid="uid://dv8qjrkfqqvh4" path="res://scripts/resources/enemy_stats.gd" id="3_w8i8w"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="4_w8i8w"]
+[ext_resource type="Script" uid="uid://c11xrbq04uvgq" path="res://scripts/States/State Machine.gd" id="5_otmr2"]
+[ext_resource type="Script" uid="uid://ckrrojldpd11k" path="res://scripts/States/EnemyIdle.gd" id="6_wtq4b"]
+[ext_resource type="Script" uid="uid://dgtffjkhmf80i" path="res://scripts/States/EnemyFollow.gd" id="7_j0cyh"]
+[ext_resource type="PackedScene" uid="uid://db6b8s2rldif4" path="res://scenes/components/health_component.tscn" id="8_g0wcc"]
+[ext_resource type="PackedScene" uid="uid://vrhg620w7vtq" path="res://scenes/components/health_bar_component.tscn" id="10_8qclf"]
+
+[sub_resource type="Resource" id="Resource_otmr2"]
+script = ExtResource("3_w8i8w")
+experience_value = 2.0
+gold_value = 5.0
+max_health = 20.0
+attack_damage = 5.0
+defense = 1.0
+move_speed = 350.0
+attack_speed = 1.0
+critical_chance = 0.05
+critical_damage = 1.5
+dodge_chance = 0.0
+metadata/_custom_type_script = "uid://dv8qjrkfqqvh4"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nokgg"]
+radius = 54.037
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebxvl"]
+radius = 37.0135
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_md484")
+
+[node name="StatsComponent" parent="." instance=ExtResource("2_ipns3")]
+stats = SubResource("Resource_otmr2")
+
+[node name="HurtBoxComponent" parent="." instance=ExtResource("3_8qclf")]
+collision_mask = 16
+health_component = NodePath("../HealthComponent")
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(1, -29)
+shape = SubResource("CircleShape2D_nokgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_ebxvl")
+
+[node name="Slime" parent="." instance=ExtResource("4_w8i8w")]
+unique_name_in_owner = true
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_otmr2")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_wtq4b")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://ckrrojldpd11k"
+
+[node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_j0cyh")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://dgtffjkhmf80i"
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_g0wcc")]
+
+[node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_8qclf")]
+visible = true
+health_component = NodePath("../HealthComponent")
+
+[connection signal="hit_by_bullet" from="HurtBoxComponent" to="." method="_on_hit_box_component_hit_by_bullet"]
+[connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]

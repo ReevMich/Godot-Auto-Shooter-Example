@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj1871q5msnfy"]
+[gd_scene load_steps=11 format=3 uid="uid://cj1871q5msnfy"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://4553c6rwxl5a" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://dwc7ydnoyf5ad" path="res://scenes/gun.tscn" id="3_i3pqv"]
-[ext_resource type="PackedScene" uid="uid://db6b8s2rldif4" path="res://scenes/components/HealthComponent.tscn" id="4_dqkch"]
-[ext_resource type="PackedScene" uid="uid://bvyjsyft6wie5" path="res://scenes/components/hit_box_component.tscn" id="4_tuyoq"]
+[ext_resource type="Resource" uid="uid://byl3bdg7yhj4c" path="res://resources/stats/player.tres" id="3_smehm"]
+[ext_resource type="PackedScene" uid="uid://db6b8s2rldif4" path="res://scenes/components/health_component.tscn" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://bvyjsyft6wie5" path="res://scenes/components/hurt_box_component.tscn" id="4_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://vrhg620w7vtq" path="res://scenes/components/health_bar_component.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://bbv5cw0vmd5ov" path="res://scenes/components/stats_component.tscn" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 31.0
@@ -20,6 +22,9 @@ collision_layer = 2
 script = ExtResource("1_onrkg")
 display_health_bar = true
 
+[node name="StatsComponent" parent="." instance=ExtResource("7_fjrip")]
+stats = ExtResource("3_smehm")
+
 [node name="HappyBoo" parent="." instance=ExtResource("1_4flbx")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,7 +37,7 @@ shape = SubResource("CapsuleShape2D_onrkg")
 position = Vector2(0, -45)
 collision_mask = 4
 
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_tuyoq")]
+[node name="HitBoxComponent" parent="." instance=ExtResource("4_tuyoq")]
 collision_layer = 0
 collision_mask = 4
 health_component = NodePath("../HealthComponent")
@@ -43,7 +48,6 @@ shape = SubResource("CircleShape2D_i3pqv")
 debug_color = Color(0.972549, 0, 0.439216, 0.231373)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_dqkch")]
-max_health = 30.0
 
 [node name="HealthBarComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_qlg0r")]
 visible = true

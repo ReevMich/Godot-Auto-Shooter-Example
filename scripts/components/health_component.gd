@@ -1,11 +1,11 @@
-extends Node
 class_name HealthComponent
+extends Node
 
 signal health_changed(current_health: float, max_health: float, health_percentage: float)
 signal death
 
 
-@export var max_health: float = 5.0:
+var max_health: float = 5.0:
 	set(value):
 		max_health = value
 		if current_health > max_health:
@@ -33,12 +33,12 @@ func get_current_health_percentage() -> float:
 func is_damaged() -> bool:
 	return current_health < max_health
 
-func _ready():	
+func _ready() -> void:	
 	call_deferred("initialize_health")
 
-func initialize_health():
+func initialize_health() -> void:
 	current_health = max_health
 
-func damage(amount: float):
+func damage(amount: float) -> void:
 	current_health -= amount
 	

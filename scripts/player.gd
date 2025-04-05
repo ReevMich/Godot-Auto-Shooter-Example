@@ -4,11 +4,17 @@ signal dealth
 
 @export var speed: float = 600.0
 @export var display_health_bar: bool = false;
+@onready var stats_component: StatsComponent = $StatsComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar_component: HealthBarComponent = $HealthBarComponent
-@onready var hitbox_component: HitBoxComponent = $HitBoxComponent
+@onready var hitbox_component: HurtBoxComponent = $HitBoxComponent
 
 func _ready() -> void:
+	#Sets initial health
+	if health_component and stats_component:
+		health_component.max_health = stats_component.stats.max_health
+		health_component.current_health = stats_component.stats.max_health
+		
 	if display_health_bar:
 		health_bar_component.show()
 	else:

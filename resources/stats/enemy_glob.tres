@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://ct0yrwy2qpk4f"]
+
+[ext_resource type="Script" uid="uid://dv8qjrkfqqvh4" path="res://scripts/resources/enemy_stats.gd" id="1_f5car"]
+
+[resource]
+script = ExtResource("1_f5car")
+experience_value = 2.0
+gold_value = 10.0
+max_health = 25.0
+attack_damage = 5.0
+defense = 2.0
+move_speed = 100.0
+attack_speed = 1.0
+critical_chance = 0.0
+critical_damage = 0.0
+dodge_chance = 0.0
+metadata/_custom_type_script = "uid://eji34aeqvwfq"

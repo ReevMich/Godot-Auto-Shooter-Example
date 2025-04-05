@@ -4,7 +4,7 @@ func _ready() -> void:
 	%GameOver.hide()
 
 func spawn_mob():
-	var new_mob = preload("res://scenes/mob.tscn").instantiate()
+	var new_mob = preload("res://scenes/enemy.tscn").instantiate()
 	%SpawnPath.progress_ratio = randf()
 	new_mob.global_position = %SpawnPath.global_position
 	%Enemies.add_child(new_mob)

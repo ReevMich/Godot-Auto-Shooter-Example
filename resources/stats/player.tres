@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=2 format=3 uid="uid://byl3bdg7yhj4c"]
+
+[ext_resource type="Script" uid="uid://eji34aeqvwfq" path="res://scripts/resources/entity_stats.gd" id="1_r8mpb"]
+
+[resource]
+script = ExtResource("1_r8mpb")
+max_health = 100.0
+attack_damage = 10.0
+defense = 2.0
+move_speed = 900.0
+attack_speed = 50.0
+critical_chance = 0.0
+critical_damage = 0.0
+dodge_chance = 0.0
+experience_value = 0.0
+gold_value = 0.0
+metadata/_custom_type_script = "uid://eji34aeqvwfq"

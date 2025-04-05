@@ -1,4 +1,5 @@
 extends Node
+class_name StateMachine
 
 @export var initial_state : State
 
@@ -6,11 +7,12 @@ var current_state : State
 var states : Dictionary = {}
 
 
-func _ready() -> void:
+func initialize(player) -> void:
 	for child in get_children():
 		if child is State:
-			states[child.name.to_lower()] = child
+			child.init(player)
 			child.Transitioned.connect(on_child_transition)
+			states[child.name.to_lower()] = child
 			
 	if initial_state:
 		initial_state.Enter()
